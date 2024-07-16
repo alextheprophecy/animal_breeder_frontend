@@ -1,0 +1,11 @@
+.animal-container {
+    width: 300px;
+    max-width: 40vw;
+    height: 250px;
+    position: absolute;
+    transition: all 2s ease-in-out;
+    transition-property: top, left;
+}
+
+.animal {
+}
