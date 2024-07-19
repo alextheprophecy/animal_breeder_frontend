@@ -36,11 +36,12 @@ const Animal = (props) => {
     CallInterval(1, 7, ()=> moveRandom())
 
     return (
-        <div className="animal-container" style={{left: `${pos.x}px`, top: `${pos.y}px`}}>
+        <div className="animal-container" style={{left: `${pos.x}px`, top: `${pos.y}px`, zIndex:selected?5:2}}>
             <img src={props.image} onClick={()=> {
                 props.selectAnimal(props.id)
                 setSelected(!selected)
-            }} style={{width: '100%', background: "transparent", filter: selected?"drop-shadow(0 0 10px white)":"contrast(75%)"}}/>
+            }} style={{width: '100%',
+                filter: selected?"drop-shadow(0 0 10px white)":"contrast(75%)"}}/>
         </div>
     )
 }

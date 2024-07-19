@@ -15,9 +15,9 @@ const MainComponent = () => {
     }, []);
 
     const updateAvatars = () => {
-        axios.get("http://localhost:4000/animal/all", {params: {has_avatar: false}}).then(list => {
+        axios.get("http://192.168.1.95:4000/animal/all", {params: {has_avatar: false}}).then(list => {
             list.data.forEach(animal => {
-                axios.get("http://localhost:4000/animal/avatar", {params: {animal_id: animal[1]}}).then(list => {
+                axios.get("http://192.168.1.95:4000/animal/avatar", {params: {animal_id: animal[1]}}).then(list => {
                     console.log("UPDATED:: ", list.data)
                 })
             })
@@ -25,7 +25,7 @@ const MainComponent = () => {
     }
 
     const updateAnimalList = () => {
-        axios.get("http://localhost:4000/animal/all").then(list => {
+        axios.get("http://192.168.1.95:4000/animal/all").then(list => {
             console.log(list.data)
             setAnimals(list.data)
         })
@@ -50,7 +50,7 @@ const MainComponent = () => {
 
     const breedAnimals = () => {
         if(selected.length!==2)return alert("you have not selected exactly two parents!")
-        axios.post("http://localhost:4000/animal/create", {parents: selected}).then(animal_data_formatted => {
+        axios.post("http://192.168.1.95:4000/animal/create", {parents: selected}).then(animal_data_formatted => {
             const animal_data = animal_data_formatted.data
             alert(animal_data.is_new?"made a child!":"child already exists!")
             updateAnimalList()
