@@ -7,3 +7,26 @@
     background-color: #8c8cd7;
     overflow: hidden;
 }
+
+.breed-button{
+    background-color: mediumvioletred;
+    color: white;
+    font-size: 2rem;
+    font-family: Bahnschrift;
+    width: 100vw;
+    height: 50px;
+}
+
+.breed-button:hover{
+    background-color: #9d146a;
+    color: #a7a7a7;
+    width: 100vw;
+    height: 50px;
+}
+
+.breed-button:active{
+    background-color: #1f9d14;
+    color: black;
+    width: 100vw;
+    height: 50px;
+}

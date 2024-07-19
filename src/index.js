@@ -4,7 +4,5 @@ import MainComponent from "./components/main/main.component";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <MainComponent/>
-  </React.StrictMode>
 );
