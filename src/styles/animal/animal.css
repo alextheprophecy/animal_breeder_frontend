@@ -3,8 +3,8 @@
     max-width: 40vw;
     height: 250px;
     position: absolute;
-    transition: all 3s ease-in-out;
-    transition-property: top, left;
+    transition: transform 3s ease-in-out;
+    /*transition-property: top, left, transform;*/
     background: transparent;
 }
 

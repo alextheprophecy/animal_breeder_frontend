@@ -2,16 +2,23 @@ import '../../styles/main/main.css'
 import Animal from "../animal/animal.component";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import Animal_infoComponent from "./animal_info.component";
+import AnimalInfo from "./animal_info.component";
 
 const MainComponent = () => {
     const [animals, setAnimals] = useState([])
     const [selected, setSelected] = useState([])
-    const blacklist = [49, 50, 57, 52]
+
+    const [infoOpen, setInfoOpen] = useState(false)
+    const [infoData, setInfoData] = useState({})
+
+
+    const blacklist = [49, 50, 57, 52, 61, 60, 62, 63, 64, 65, 66, 67, 68, 69, 48, 55, 71, 72, 59, 56, 51, 58]
     const whitelist = [63, 60, 59, 67, 57, 72]
 
     useEffect(() => {
         updateAnimalList()
-        updateAvatars()
+        //updateAvatars()
     }, []);
 
     const updateAvatars = () => {
@@ -26,7 +33,6 @@ const MainComponent = () => {
 
     const updateAnimalList = () => {
         axios.get("http://192.168.1.95:4000/animal/all").then(list => {
-            console.log(list.data)
             setAnimals(list.data)
         })
     }
@@ -34,17 +40,23 @@ const MainComponent = () => {
     const selectAnimal = (animalId) => {
         if (selected.includes(animalId)) setSelected(old=>old.filter(a=>a!==animalId))
         else setSelected(old=> [...old, animalId])
+
+        if (!selected.includes(animalId)){
+            const animal = animals.find(a=>a[1]===animalId)
+            setInfoData({image: animal[0], info: animal[2]})
+            setInfoOpen(true)
+        }
+
     }
 
     const displayAnimals = () => {
         return animals.map(a => {
             if(blacklist.includes(a[1]))return ""
-            return <Animal image={a[0].replace(".png", "-avatar.png")} selectAnimal={selectAnimal} id={a[1]}/>
+            return <Animal image={a[0].replace(".png", "-avatar.png")} selectAnimal={selectAnimal} id={a[1]}/> //.replace(".png", "-avatar.png")
         })
     }
 
     const showSelected = () => {
-        console.log(selected)
         return selected.map(a => `${a}, `)
     }
 
@@ -60,13 +72,13 @@ const MainComponent = () => {
         })
     }
 
+    //            <button className={"breed-button"} onClick={breedAnimals}>BREED</button>
     return (
         <div className="main-container">
-            <button className={"breed-button"} onClick={breedAnimals}>BREED</button>
             {displayAnimals()}
-
+            <button className={"breed-button"} onClick={()=>{}}>Breed</button>
             {showSelected()}
-
+            <AnimalInfo open={infoOpen} infoData={infoData} closeInfo={()=>setInfoOpen(false)}/>
         </div>
     )
 }
