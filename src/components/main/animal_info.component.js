@@ -14,15 +14,17 @@ const AnimalInfo = ({open, infoData, closeInfo}) => {
                     </div>
 
                     <img className={"info-animal-image"} src={infoData.image}/>
-                    <div className={"info-animal-stats"}>
-                        <div className={"info-animal-stats-bar"} style={{width:`${hungerPercentage}%`}}>
-                            <div className={"info-animal-stats-bar-label"}>Hunger </div>
-                        </div>
 
-                        <div className={"info-animal-stats-bar"} style={{width:`${agePercentage}%`}}>
-                            <div className={"info-animal-stats-bar-label"}>Age </div>
+                    <div className={"stats-container"}>
+                        <div className={"flex-width-padding"}>
+                            <div className={"info-animal-stats-bar-label"}>Hunger</div>
+                            <div className={"info-animal-stats-bar-label"}>Life Expectancy</div>
                         </div>
-
+                        <div className={"info-animal-stats"}>
+                            <div className={"info-animal-stats-bar"} style={{width:`${hungerPercentage}%`}}/>
+                            <div className={"info-animal-stats-bar"} style={{width:`${agePercentage}%`}}/>
+                        </div>
+                        <div className={"flex-width-padding"}/>
                     </div>
                     <div className={"info-animal-description"}>
                         {infoData.info.behaviour}

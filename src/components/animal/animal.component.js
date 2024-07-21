@@ -4,7 +4,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Animal = (props) => {
     const WINDOW = useWindowDimensions() //TODO: fetch values from parent
-    const BOUNDS = {width: WINDOW.width - (300/2), height: WINDOW.height - 150} //TODO: care that the offset are hardcoded
+    const BOUNDS = {width: WINDOW.width - (100), height: WINDOW.height - 250} //TODO: care that the offset are hardcoded
 
     const [pos, setPos] = useState(randomPos())
     const [selected, setSelected] = useState(false)

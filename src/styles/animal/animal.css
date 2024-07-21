@@ -1,6 +1,6 @@
 .animal-container {
     width: 220px;
-    max-width: 40vw;
+    max-width: 33vw;
     height: 250px;
     position: absolute;
     transition: transform 3s ease-in-out;
